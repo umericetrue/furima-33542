@@ -31,7 +31,7 @@
 | prefecture_id           | integer    | null: false                    |
 | scheduled_delivery_id   | integer    | null: false                    |
 | price                   | integer    | null: false                    |
-| user_id                 | references | null: false, foreign_key: true |
+| user                    | references | null: false, foreign_key: true |
 
 ### Association
 
@@ -42,27 +42,27 @@
 
 | Column       | Type       | Options                        |
 | ------------ | ---------- | ------------------------------ |
-| user_id      | references | null: false, foreign_key: true |
-| item_id      | references | null: false, foreign_key: true |
-| address_id   | references | null: false, foreign_key: true |
+| user         | references | null: false, foreign_key: true |
+| item         | references | null: false, foreign_key: true |
 
 ### Association
 
 - belongs_to :user
 - belongs_to :item
-- belongs_to :address
+- has_one :address
 
 ## addresses テーブル
 
-| Column        | Type    | Options     |
-| ------------- | ------- | ----------- |
-| postal_code   | integer | null: false |
-| prefecture_id | integer | null: false |
-| city          | string  | null: false |
-| addresses     | string  | null: false |
-| building      | string  |             |
-| phone_number  | integer | null: false |
+| Column        | Type       | Options                        |
+| ------------- | ---------- | ------------------------------ |
+| postal_code   | integer    | null: false                    |
+| prefecture_id | integer    | null: false                    |
+| city          | string     | null: false                    |
+| addresses     | string     | null: false                    |
+| building      | string     |                                |
+| phone_number  | integer    | null: false                    |
+| order         | references | null: false, foreign_key: true |
 
 ### Association
 
-- has_one :order
+- belongs_to :order
