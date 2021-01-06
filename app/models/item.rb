@@ -12,13 +12,14 @@ class Item < ApplicationRecord
   with_options presence: true do
     validates :image
     validates :name, length: { maximum: 40 }
-    validates :info, length: { maximum: 1000}
-    validates :price, numericality: { only_integer: true, message: "is invalid. Input half-width characters." }
+    validates :info, length: { maximum: 1000 }
+    validates :price, numericality: { only_integer: true, message: 'is invalid. Input half-width characters.' }
   end
-  
-  validates :price, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999, message: "is out of setting range" }
 
-  with_options numericality: { other_than: 0, message: "must be selected"} do
+  validates :price,
+            numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999, message: 'is out of setting range' }
+
+  with_options numericality: { other_than: 0, message: 'must be selected' } do
     validates :category_id
     validates :sales_status_id
     validates :shipping_fee_status_id
