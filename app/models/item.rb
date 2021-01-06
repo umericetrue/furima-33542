@@ -18,7 +18,7 @@ class Item < ApplicationRecord
   
   validates :price, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999, message: "is out of setting range" }
 
-  with_options numericality: { other_than: 0, message: "isn't selected"} do
+  with_options numericality: { other_than: 0, message: "must be selected"} do
     validates :category_id
     validates :sales_status_id
     validates :shipping_fee_status_id
