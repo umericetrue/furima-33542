@@ -30,8 +30,7 @@ class ItemsController < ApplicationController
 
   def update
     @item = Item.find(params[:id])
-    @item.update(item_params)
-    if @item.valid?
+    if @item.update(item_params)
       redirect_to action: :show
     else
       render action: :edit
