@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
   def index
-    @item = Item.find(params[:id])
+    @user_order = UserOrder.new
   end
 
   def create
