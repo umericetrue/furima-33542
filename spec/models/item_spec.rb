@@ -74,7 +74,7 @@ RSpec.describe Item, type: :model do
       end
 
       it 'priceの値が10000000以上だと保存できないこと' do
-        @item.price = 10000000
+        @item.price = 10_000_000
         @item.valid?
         expect(@item.errors.full_messages).to include('Price is out of setting range')
       end
@@ -84,13 +84,13 @@ RSpec.describe Item, type: :model do
         @item.valid?
         expect(@item.errors.full_messages).to include('Price is invalid. Input half-width numbers.')
       end
-    
+
       it 'priceが半角英数混合だと保存できないこと' do
         @item.price = 'a1'
         @item.valid?
         expect(@item.errors.full_messages).to include('Price is invalid. Input half-width numbers.')
       end
-    
+
       it 'priceが半角英語だけだと保存できないこと' do
         @item.price = 'a'
         @item.valid?
