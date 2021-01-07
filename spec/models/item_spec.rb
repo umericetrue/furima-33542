@@ -82,7 +82,19 @@ RSpec.describe Item, type: :model do
       it 'priceが全角数字だと保存できないこと' do
         @item.price = '１０００'
         @item.valid?
-        expect(@item.errors.full_messages).to include('Price is invalid. Input half-width characters.')
+        expect(@item.errors.full_messages).to include('Price is invalid. Input half-width numbers.')
+      end
+    
+      it 'priceが半角英数混合だと保存できないこと' do
+        @item.price = 'a1'
+        @item.valid?
+        expect(@item.errors.full_messages).to include('Price is invalid. Input half-width numbers.')
+      end
+    
+      it 'priceが半角英語だけだと保存できないこと' do
+        @item.price = 'a'
+        @item.valid?
+        expect(@item.errors.full_messages).to include('Price is invalid. Input half-width numbers.')
       end
     end
   end
