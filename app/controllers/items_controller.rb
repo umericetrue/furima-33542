@@ -28,14 +28,6 @@ class ItemsController < ApplicationController
   end
 
   def update
-    @item = Item.find(params[:id])
-    @item.update(item_params)
-    if @item.valid?
-      redirect_to action: :show
-    else
-      render action: :edit
-    end
-      
   end
 
   private
