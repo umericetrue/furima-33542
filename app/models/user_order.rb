@@ -1,6 +1,6 @@
 class UserOrder
   include ActiveModel::Model
-  attr_accessor :user_id, :item_id, :postal_code, :prefecture_id, :city, :address, :building, :phone_number, :order_id
+  attr_accessor :user_id, :item_id, :postal_code, :prefecture_id, :city, :address, :building, :phone_number, :order_id, :token
 
   with_options presence: true do
     validates :postal_code, format: { with: /\A[0-9]{3}-[0-9]{4}\z/, message: "is invalid. Include hyphen(-)" }
@@ -8,6 +8,7 @@ class UserOrder
     validates :city
     validates :address
     validates :phone_number, format: { with: /\A0\d{9,10}\z/, message: "Input half-width numbers"}
+    validates :token
   end
   validates :phone_number, length: { maximum: 11 }
 
