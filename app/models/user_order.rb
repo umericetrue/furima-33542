@@ -10,7 +10,7 @@ class UserOrder
     validates :phone_number, format: { with: /\A0\d{9,10}\z/, message: "Input half-width numbers"}
     validates :token
   end
-  validates :phone_number, length: { maximum: 11 }
+  validates :phone_number, length: { minimum: 10, maximum: 11 }
 
   def save
     order = Order.create(user_id: user_id, item_id: item_id)
